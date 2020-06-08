@@ -1,6 +1,8 @@
 package com.example.mymovie.Fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +39,29 @@ public class MyLoginFragment extends Fragment {
         mView = inflater.inflate(R.layout.fragment_login ,container,false);
 
         init();
+
+
+        edit_id.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // TODO Auto-generated method stub
+                if(keyCode == event.KEYCODE_ENTER)
+                {
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        edit_pw.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == event.KEYCODE_ENTER){
+                    return true;
+                }
+                return false;
+            }
+        });
 
         signInTxt.setOnClickListener(new View.OnClickListener() {
             @Override

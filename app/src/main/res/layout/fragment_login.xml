@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
-            android:text="로그인이 필요한 서비스 입니다."
+            android:text="로그인"
             android:textSize="@dimen/default_font"/>
 
         <EditText
@@ -58,8 +58,10 @@
                 android:id="@+id/signInTxt"
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
                 android:gravity="center"
-                android:text="로그인"/>
+                android:text="로그인"
+                android:background="@drawable/rank_border"/>
 
             <TextView
                 android:id="@+id/signUpTxt"
@@ -67,7 +69,8 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_toRightOf="@id/signInTxt"
-                android:text="회원가입"/>
+                android:text="회원가입"
+                android:background="@drawable/rank_border"/>
 
         </RelativeLayout>
 

@@ -91,7 +91,6 @@ public class MovieManager {
     }
 
     public void putUserMap(String userId, UserInfo userInfo) {
-        //혹시나 모른 중복 입력 방지
         if (!userMap.containsKey(userId)) {
             this.userMap.put(userId, userInfo);
         }
@@ -133,8 +132,6 @@ public class MovieManager {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
-
-    //로그인을 하는 순간  -> 비교후 로그인 한 정보를 Shared 에 저장
     public void loadDB() {
         databaseReference.child("info").child("user").addChildEventListener(new ChildEventListener() {
             @Override
@@ -142,13 +139,6 @@ public class MovieManager {
                 //DB값을 앱에다 넣을때 -> 로그인을 할 떄
                 UserInfo userInfo = dataSnapshot.getValue(UserInfo.class);
                 putUserMap(userInfo.getId(), userInfo);
-
-                /*if(userInfo.getId() != null){
-                    userMap.put(userInfo.getId(),userInfo);
-                }*/
-
-                //getUserList().add(userInfo);
-
             }
 
             @Override
@@ -186,9 +176,7 @@ public class MovieManager {
         editor.putString("loginId", userId);
         editor.apply();
 
-        //saveFavorMovieList(userId);
-        databaseReference = firebaseDatabase.getReference(userId);
-        databaseReference.removeValue();
+        saveFavorMovieList(userId);
 
     }
 
@@ -202,119 +190,68 @@ public class MovieManager {
             //favoriteList.clear();
             updateMovieList(userId);
         }
-
-        //contain 시켜서 해당 id 값에 맞는 movieList 불러와서 대조시킨다음에 favorlist에 넣어준다 .
-
-        //setLoginState(pref.getBoolean("loginState", false));
-        //setUserId(pref.getString("loginId", null));
     }
 
-    //이건 HomeFragment가 그려진 후에
-    public void loadFavorImage(MovieListAdapter movieListAdapter){
+    //HomeFragment가 그려진 후에
+    public void loadFavorImage(MovieListAdapter movieListAdapter) {
 
-        if(movieListAdapter ==null)
+        if (movieListAdapter == null)
             return;
 
-        if(favoriteList.size() != 0){
+        if (favoriteList.size() != 0) {
             SparseBooleanArray selectedItems = new SparseBooleanArray(0);
-            //MovieListAdapter movieListAdapter = (MovieListAdapter)getValue("MovieListAdapter");
-            for(int i=0;i<movieList.size();i++){
-                if(favoriteList.contains(movieList.get(i))){
-                    selectedItems.put(i,true);
+            for (int i = 0; i < movieList.size(); i++) {
+                if (favoriteList.contains(movieList.get(i))) {
+                    selectedItems.put(i, true);
                 }
             }
-
             // -> HomeFragment에 있는 어댑터를 가져와야한다.  MovieListAdapter movieListAdapter = new MovieListAdapter();
             movieListAdapter.setmSelectedItems(selectedItems);
         }
-
-
-
     }
 
     public void saveFavorMovieList(String userId) {
 
-        //이미 들어 있는 값은 넣지 않거나 또는 모두 삭제후 다시 넣거나 어떤것이 효율적인가 부담을 덜가게하는가
-
         if (userId != null && isLoginState()) {
             for (int i = 0; i < favoriteList.size(); i++) {
                 String movieName = favoriteList.get(i).getTitle();
-                //databaseReference.child("info").child(userId).updateChildren(null);
                 databaseReference.child("info").child(userId).push().setValue(movieName);
-                //databaseReference.child("info").child(userId)
-
             }
         }
-
     }
 
 
     public void updateMovieList(String userId) {
 
-        //favoriteList.clear(); 값이 들어가면
-            /*databaseReference.child("info").child(userId).addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                    String movieName = dataSnapshot.getValue().toString();
-                    containMovie(movieName);
+        databaseReference.child("info").child(userId).removeEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                String movieName = dataSnapshot.getValue().toString();
+                containMovie(movieName);
+            }
 
-                    //favoriteList.add()
-                }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) { }
+            }
 
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) { }
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
 
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            }
 
-                }
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
 
-                }
-            });*/
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            databaseReference.child("info").child(userId).removeEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                    String movieName = dataSnapshot.getValue().toString();
-                    containMovie(movieName);
-                }
-
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                }
-
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-
-
-
-
-
-
+            }
+        });
     }
-
-
 
     private void containMovie(String movieName) {
 
