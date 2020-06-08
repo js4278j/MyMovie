@@ -35,7 +35,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyC3_5nkk58D0TVzP0MTa9Cerr6LR7oTf24" />
 
         <activity android:name=".Activity.WebViewActivity" />
         <activity android:name=".MainActivity" android:configChanges="orientation|screenSize">

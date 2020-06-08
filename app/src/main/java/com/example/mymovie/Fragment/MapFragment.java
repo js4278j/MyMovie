@@ -144,8 +144,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Activit
                 .setInterval(UPDATE_INTERVAL_MS)
                 .setFastestInterval(FASTEST_UPDATE_INTERVAL_MS);
 
-        LocationSettingsRequest.Builder builder =
-                new LocationSettingsRequest.Builder();
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder();
         builder.addLocationRequest(locationRequest);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
