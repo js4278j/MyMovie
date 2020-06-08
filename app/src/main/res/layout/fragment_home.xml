@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/searchLout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="10"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="@drawable/search_bar">
+
+        <!--<EditText
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="검색"
+            android:textColor="@color/colorGray"/>-->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="9"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:src="@drawable/ic_search_gray_24dp"/>
+
+        <EditText
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="검색"
+            android:inputType="textMultiLine|textNoSuggestions"
+            android:paddingLeft="5dp"
+            android:textColor="@color/colorGray"
+            android:textColorHint="@color/colorGray"
+            android:textCursorDrawable="@color/colorOrange"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movieRcv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorGray2"/>
+
+</LinearLayout>

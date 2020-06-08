@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+
+    <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="50dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/textview"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:text="좌표" />
+
+        </LinearLayout>-->
+    <FrameLayout
+        android:id="@+id/mainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="9" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_weight="1"
+        android:weightSum="5"
+        android:orientation="horizontal">
+
+        <!--home -->
+        <LinearLayout
+            android:id="@+id/mainHomeLout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/color_select">
+
+            <ImageView
+                android:id="@+id/homeImg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_home_black_24dp"/>
+
+            <TextView
+                android:id="@+id/homeTxt"
+                android:layout_width="40dp"
+                android:layout_height="15dp"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:text="@string/title_home"
+                android:textColor="@color/color_black"/>
+        </LinearLayout>
+        <!--home end -->
+
+        <!--favorite -->
+        <LinearLayout
+            android:id="@+id/mainFavoriteLout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/design_default_color_background">
+
+            <ImageView
+                android:id="@+id/favorImg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_favorite_border_black_24dp"/>
+
+            <TextView
+                android:id="@+id/favorTxt"
+                android:layout_width="40dp"
+                android:layout_height="15dp"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:text="@string/title_favorite"
+                android:textColor="@color/color_black"/>
+        </LinearLayout>
+        <!--favorite end -->
+
+        <!--category -->
+        <LinearLayout
+            android:id="@+id/mainRankLout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/design_default_color_background">
+
+            <ImageView
+                android:id="@+id/rankImg"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_list_black_24dp" />
+
+            <TextView
+                android:id="@+id/rankTxt"
+                android:layout_width="48dp"
+                android:layout_height="15dp"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:text="@string/title_rank"
+                android:textColor="@color/color_black"/>
+        </LinearLayout>
+        <!--category end -->
+
+        <!--store -->
+        <LinearLayout
+            android:id="@+id/mainMapLout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/design_default_color_background">
+
+            <ImageView
+                android:id="@+id/mapImg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_gps_fixed_black_24dp"/>
+
+            <TextView
+                android:id="@+id/mapTxt"
+                android:layout_width="40dp"
+                android:layout_height="15dp"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:text="@string/title_gps"
+                android:textColor="@color/color_black"/>
+        </LinearLayout>
+        <!--store end -->
+
+        <!--my -->
+        <LinearLayout
+            android:id="@+id/mainMyLout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/design_default_color_background">
+
+            <ImageView
+                android:id="@+id/myImg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_person_outline_black_24dp"/>
+
+            <TextView
+                android:id="@+id/myTxt"
+                android:layout_width="40dp"
+                android:layout_height="15dp"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:text="@string/title_my"
+                android:textColor="@color/color_black"/>
+        </LinearLayout>
+        <!--my end -->
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
