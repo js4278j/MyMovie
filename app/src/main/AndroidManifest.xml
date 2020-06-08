@@ -10,9 +10,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" /> <!-- <meta-data android:name="com.kakao.sdk.AppKey" android:value="9d85e39221acebffd0c0e3b4f3073b24"/> -->
-    <meta-data
+    <!--<meta-data
         android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyBaC7QZfjHyP8xc75-5xsUNR00WpjEFFp0" />
+        android:value="AIzaSyBaC7QZfjHyP8xc75-5xsUNR00WpjEFFp0" />-->
 
     <application
         android:allowBackup="false"

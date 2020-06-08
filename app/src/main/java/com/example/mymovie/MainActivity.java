@@ -1,12 +1,16 @@
 package com.example.mymovie;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
@@ -29,11 +33,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        permissionCheck();
         setContentView(R.layout.activity_main);
         init();
         movieManager.loadLoginPref();
 
-        //처음화면 세팅
+        //처음화면
         if (savedInstanceState == null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.mainContainer, HomeFragment.newInstance(), "home");
@@ -42,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         changeMainFrame();
+
+
 
     }
 
@@ -164,6 +171,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void permissionCheck(){
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        1001);
+            }
+        }
+    }
 
     @Override
     protected void onDestroy() {

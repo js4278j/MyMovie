@@ -69,6 +69,8 @@ public class HomeFragment extends Fragment implements TextWatcher {
             }
         });
 
+
+
         return mView;
     }
 
