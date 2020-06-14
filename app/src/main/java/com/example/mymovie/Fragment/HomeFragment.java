@@ -121,7 +121,14 @@ public class HomeFragment extends Fragment implements TextWatcher {
                         Element rElem = elem.select("dl[class=info_txt1] dt").next().first();
                         String my_release = rElem.select("dd").text();
                         Element dElem = elem.select("dt[class=tit_t2]").next().first();
-                        String my_director = "감독: " + dElem.select("a").text();
+
+                        String my_director;
+                        if(dElem == null) {
+                            my_director = "정보없음";
+                        }else {
+                            my_director = "감독: " + dElem.select("a").text();
+                        }
+
                         movieList.add(new MovieItem(my_title, my_imgUrl, my_link, my_release, my_director));
 
                     }
