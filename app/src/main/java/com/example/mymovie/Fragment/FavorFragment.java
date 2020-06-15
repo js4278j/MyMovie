@@ -111,7 +111,6 @@ public class FavorFragment extends Fragment {
         helper = new ItemTouchHelper(swipeAndDragHelper);
         favorListAdapter.setTouchHelper(helper);
         favorRcv.setAdapter(favorListAdapter);
-        //RecyclerView에 ItemTouchHelper 붙이기
         helper.attachToRecyclerView(favorRcv);
         favorRcv.setNestedScrollingEnabled(false);
         favorListAdapter.notifyDataSetChanged();
